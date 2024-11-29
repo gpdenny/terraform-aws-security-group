@@ -1,13 +1,16 @@
 repos:
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.96.1
+    rev: v1.96.2
     hooks:
       - id: terraform_fmt
+      - id: terraform_wrapper_module_for_each
+        args:
+          - --args=--module-dir=.
       - id: terraform_docs
         args:
-          - '--args=--lockfile=false'
+          - "--args=--lockfile=false"
       - id: terraform_validate
-        exclude: '^modules/_templates/[^/]+$'
+        exclude: "^modules/_templates/[^/]+$"
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
